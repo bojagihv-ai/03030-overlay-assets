@@ -262,6 +262,25 @@ body.b24-overlay-active #contents {
   padding: 0;
 }
 
+.b24-login-page .login,
+.b24-login-page .login fieldset,
+.b24-login-page .login h3,
+.b24-login-page .login label,
+.b24-login-page .login .security,
+.b24-login-page .login .link,
+.b24-login-page .login ul,
+.b24-login-page .xans-member-login {
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.b24-login-page .login h3 img {
+  max-width: 100%;
+  height: auto;
+}
+
 .b24-login-page .login label,
 .b24-login-page [module="MyShop_OrderHistoryNologin"] li,
 .b24-login-page .xans-myshop-orderhistorynologin li {
@@ -357,6 +376,10 @@ body.b24-overlay-active #contents {
   .b24-flow-hero,
   .b24-flow-panel {
     padding: 16px;
+  }
+
+  .b24-login-page .b24-flow-panel {
+    padding: 12px;
   }
 
   .b24-flow-hero h1 {

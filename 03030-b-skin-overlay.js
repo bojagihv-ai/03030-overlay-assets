@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-12.1";
+  var VERSION = "2026-06-12.2";
   var CSS_URL = "https://cdn.jsdelivr.net/gh/bojagihv-ai/03030-overlay-assets@main/03030-b-skin-service.css?v=" + VERSION;
 
   if (window.__B24_03030_OVERLAY_VERSION__ === VERSION) return;
