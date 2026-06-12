@@ -14,7 +14,23 @@ body {
 
 body.b24-overlay-active #contents {
   min-width: 0;
+  float: none !important;
+  width: min(960px, 100%) !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
   overflow: visible;
+}
+
+body.b24-overlay-active #container {
+  display: block !important;
+  width: min(1120px, calc(100% - 32px)) !important;
+  max-width: 1120px !important;
+  margin: 0 auto !important;
+}
+
+body.b24-overlay-active #sidebar,
+body.b24-overlay-active #quick {
+  display: none !important;
 }
 
 .b24-flow-page {
