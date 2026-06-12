@@ -1,0 +1,371 @@
+/* Codex 03030 B service pages start - review skin only */
+:root {
+  --b24-ink: #1f2a24;
+  --b24-muted: #647067;
+  --b24-line: #dfe7e2;
+  --b24-accent: #4c7d62;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body.b24-overlay-active #contents {
+  min-width: 0;
+  overflow: visible;
+}
+
+.b24-flow-page {
+  display: grid;
+  gap: 22px;
+  padding-top: 24px;
+  padding-bottom: 38px;
+}
+
+.b24-flow-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 330px);
+  gap: 18px;
+  align-items: stretch;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f8f6 100%);
+  padding: 22px;
+  box-sizing: border-box;
+}
+
+.b24-flow-hero span {
+  color: var(--b24-accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.b24-flow-hero h1 {
+  margin: 8px 0 8px;
+  color: var(--b24-ink);
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.b24-flow-hero p {
+  margin: 0;
+  color: var(--b24-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.b24-flow-hero ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.b24-flow-hero li {
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+  color: var(--b24-ink);
+  font-weight: 800;
+}
+
+.b24-flow-panel {
+  min-width: 0;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.b24-flow-panel > .path,
+.b24-flow-panel > .titleArea,
+.b24-board-page [module="board_title_1002"] .path {
+  display: none;
+}
+
+.b24-flow-page table {
+  width: 100% !important;
+  border-collapse: collapse;
+  border-color: var(--b24-line);
+  background: #fff;
+}
+
+.b24-flow-page th,
+.b24-flow-page td {
+  border-color: var(--b24-line) !important;
+  color: var(--b24-ink);
+  line-height: 1.55;
+}
+
+.b24-flow-page th {
+  background: #f4f8f6;
+  font-weight: 900;
+}
+
+.b24-flow-page input[type="text"],
+.b24-flow-page input[type="password"],
+.b24-flow-page select {
+  max-width: 100%;
+  min-height: 36px;
+  border: 1px solid var(--b24-line);
+  border-radius: 6px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.b24-flow-page .orderListArea,
+.b24-flow-page .boardList,
+.b24-flow-page [module="Order_TotalSummary"],
+.b24-flow-page [module="Order_TotalOversea"],
+.b24-flow-page [module="myshop_wishlist"],
+.b24-flow-page .xans-order-totalsummary,
+.b24-flow-page .xans-order-totaloversea,
+.b24-flow-page .xans-myshop-wishlist {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.b24-cart-page .boardList,
+.b24-cart-page [module="Order_TotalSummary"] table,
+.b24-cart-page [module="myshop_wishlist"] table,
+.b24-cart-page .xans-order-totalsummary table,
+.b24-cart-page .xans-myshop-wishlist table,
+.b24-board-page .boardList table {
+  min-width: 760px;
+}
+
+.b24-flow-page a:has(> img[alt]) {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--b24-line);
+  border-radius: 6px;
+  background: #fff;
+  padding: 0 12px;
+  color: var(--b24-ink);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.b24-flow-page a:has(> img[alt]) > img {
+  display: none;
+}
+
+.b24-flow-page a:has(> img[alt="로그인"])::after { content: "로그인"; }
+.b24-flow-page a:has(> img[alt="회원가입"])::after { content: "회원가입"; }
+.b24-flow-page a:has(> img[alt="비회원구매"])::after { content: "비회원 구매"; }
+.b24-flow-page a:has(> img[alt="주문하기"])::after { content: "주문하기"; }
+.b24-flow-page a:has(> img[alt="관심상품등록"])::after { content: "관심상품"; }
+.b24-flow-page a:has(> img[alt="삭제"])::after,
+.b24-flow-page a:has(> img[alt="삭제하기"])::after { content: "삭제"; }
+.b24-flow-page a:has(> img[alt="옵션변경"])::after { content: "옵션 변경"; }
+.b24-flow-page a:has(> img[alt="변경"])::after { content: "변경"; }
+.b24-flow-page a:has(> img[alt="추가"])::after { content: "추가"; }
+.b24-flow-page a:has(> img[alt="전체상품주문"])::after { content: "전체 상품 주문"; }
+.b24-flow-page a:has(> img[alt="선택상품주문"])::after { content: "선택 상품 주문"; }
+.b24-flow-page a:has(> img[alt="쇼핑계속하기"])::after { content: "쇼핑 계속하기"; }
+.b24-flow-page a:has(> img[alt="장바구니비우기"])::after { content: "장바구니 비우기"; }
+.b24-flow-page a:has(> img[alt="견적서출력"])::after { content: "견적서 출력"; }
+.b24-flow-page a:has(> img[alt="글쓰기"])::after { content: "글쓰기"; }
+.b24-flow-page a:has(> img[alt="찾기"])::after { content: "찾기"; }
+.b24-flow-page a:has(> img[alt="글 이동"])::after { content: "글 이동"; }
+.b24-flow-page a:has(> img[alt="글 복사"])::after { content: "글 복사"; }
+.b24-flow-page a:has(> img[alt="장바구니담기"])::after { content: "장바구니 담기"; }
+
+.b24-cart-page [module="Order_TotalOrder"],
+.b24-cart-page .xans-order-totalorder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.b24-cart-page [module="Order_TotalOrder"] a:has(> img[alt="전체상품주문"]),
+.b24-cart-page [module="Order_TotalOrder"] a:has(> img[alt="선택상품주문"]),
+.b24-cart-page .xans-order-totalorder a:has(> img[alt="전체상품주문"]),
+.b24-cart-page .xans-order-totalorder a:has(> img[alt="선택상품주문"]),
+.b24-login-page [module="member_login"] a:has(> img[alt="로그인"]),
+.b24-login-page .xans-member-login a:has(> img[alt="로그인"]) {
+  border-color: var(--b24-ink);
+  background: var(--b24-ink);
+  color: #fff;
+}
+
+.b24-cart-page [module="Order_TabInfo"] ul,
+.b24-cart-page .xans-order-tabinfo ul,
+.b24-cart-page [module="Order_SelectOrder"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.b24-cart-page [module="Order_TabInfo"] ul,
+.b24-cart-page .xans-order-tabinfo ul {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.b24-cart-page [module="Order_TabInfo"] li a,
+.b24-cart-page .xans-order-tabinfo li a {
+  display: inline-flex;
+  border: 1px solid var(--b24-line);
+  border-radius: 6px;
+  background: #f9fbfa;
+  padding: 9px 12px;
+  color: var(--b24-ink);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.b24-cart-page .help {
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  padding: 18px;
+}
+
+.b24-login-page .b24-flow-panel {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.b24-login-page [module="member_login"],
+.b24-login-page [module="MyShop_OrderHistoryNologin"],
+.b24-login-page .xans-member-login,
+.b24-login-page .xans-myshop-orderhistorynologin {
+  min-width: 0;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.b24-login-page fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.b24-login-page .login label,
+.b24-login-page [module="MyShop_OrderHistoryNologin"] li,
+.b24-login-page .xans-myshop-orderhistorynologin li {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.b24-login-page .login label input,
+.b24-login-page [module="MyShop_OrderHistoryNologin"] input,
+.b24-login-page .xans-myshop-orderhistorynologin input {
+  width: 100%;
+}
+
+.b24-login-page .login ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.b24-login-page .link {
+  border-top: 1px solid var(--b24-line);
+  margin-top: 14px;
+  padding-top: 14px;
+  color: var(--b24-muted);
+  line-height: 1.65;
+}
+
+.b24-board-page [module="board_title_1002"] .title,
+.b24-board-page .xans-board-title-1002 .title,
+.b24-board-page .xans-board-title .title {
+  border-bottom: 1px solid var(--b24-line);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+}
+
+.b24-board-page [module="board_title_1002"] .title h2,
+.b24-board-page .xans-board-title-1002 .title h2,
+.b24-board-page .xans-board-title .title h2 {
+  color: var(--b24-ink);
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.b24-board-page .boardSort,
+.b24-board-page [module="board_search_1002"] .boardSearch,
+.b24-board-page .xans-board-search-1002 .boardSearch,
+.b24-board-page .xans-board-search .boardSearch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  margin: 14px 0;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.b24-board-page [module="board_ButtonList_1002"],
+.b24-board-page .xans-board-buttonlist-1002,
+.b24-board-page .xans-board-buttonlist {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.b24-board-page [module="board_paging_1002"],
+.b24-board-page .xans-board-paging-1002,
+.b24-board-page .xans-board-paging,
+.b24-cart-page [module="myshop_wishlistpaging"],
+.b24-cart-page .xans-myshop-wishlistpaging {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+@media (max-width: 1060px) {
+  .b24-flow-hero,
+  .b24-login-page .b24-flow-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .b24-flow-hero,
+  .b24-flow-panel {
+    padding: 16px;
+  }
+
+  .b24-flow-hero h1 {
+    font-size: 22px;
+  }
+
+  .b24-cart-page [module="Order_TotalOrder"],
+  .b24-cart-page [module="Order_SelectOrder"] {
+    justify-content: flex-start;
+  }
+}
+/* Codex 03030 B service pages end */
