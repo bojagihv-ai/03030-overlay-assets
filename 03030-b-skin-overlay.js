@@ -1,8 +1,11 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-12.2";
-  var CSS_URL = "https://cdn.jsdelivr.net/gh/bojagihv-ai/03030-overlay-assets@main/03030-b-skin-service.css?v=" + VERSION;
+  var VERSION = "2026-06-12.3";
+  var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
+  var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
+    ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
+    : "https://cdn.jsdelivr.net/gh/bojagihv-ai/03030-overlay-assets@main/03030-b-skin-service.css?v=" + VERSION;
 
   if (window.__B24_03030_OVERLAY_VERSION__ === VERSION) return;
   window.__B24_03030_OVERLAY_VERSION__ = VERSION;
