@@ -406,5 +406,60 @@ body.b24-overlay-active #quick {
   .b24-cart-page [module="Order_SelectOrder"] {
     justify-content: flex-start;
   }
+
+  .b24-board-page .boardList {
+    overflow-x: visible;
+  }
+
+  .b24-board-page .boardList table {
+    display: block;
+    min-width: 0 !important;
+    border: 0;
+  }
+
+  .b24-board-page .boardList colgroup,
+  .b24-board-page .boardList thead {
+    display: none !important;
+  }
+
+  .b24-board-page .boardList tbody,
+  .b24-board-page .boardList tr,
+  .b24-board-page .boardList td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .b24-board-page .boardList tr {
+    border: 1px solid var(--b24-line);
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 10px 12px;
+    background: #fff;
+  }
+
+  .b24-board-page .boardList td {
+    border: 0 !important;
+    padding: 4px 0 !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  .b24-board-page .boardList td:nth-child(n+6),
+  .b24-board-page .boardList td.displaynone {
+    display: none !important;
+  }
+
+  .b24-board-page .boardList td.subject,
+  .b24-board-page .boardList td:nth-child(3) {
+    color: var(--b24-ink);
+    font-weight: 900;
+    line-height: 1.5;
+  }
+
+  .b24-board-page .boardList td a {
+    color: inherit !important;
+    text-decoration: none;
+  }
 }
 /* Codex 03030 B service pages end */
