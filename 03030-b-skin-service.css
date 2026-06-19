@@ -460,36 +460,86 @@ body.b24-overlay-active #quick {
 .b24-myshop-page #myshopMain,
 .b24-myshop-page [module="myshop_main"],
 .b24-myshop-page .xans-myshop-main {
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  overflow: visible !important;
 }
 
 .b24-myshop-page .shopMain {
+  float: none !important;
+  position: relative !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
   min-width: 0;
+  min-height: 130px;
   border: 1px solid var(--b24-line);
   border-radius: 8px;
-  background: #fff;
+  background: #fff !important;
+  margin: 0 !important;
   padding: 16px;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
 .b24-myshop-page .shopMain h3 {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
   margin: 0 0 8px;
+  padding: 0 !important;
+  background: none !important;
 }
 
 .b24-myshop-page .shopMain h3 a {
   display: grid;
   gap: 4px;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 24px 0 0 !important;
+  background: none !important;
   color: var(--b24-ink);
   text-decoration: none;
 }
 
+.b24-myshop-page .shopMain h3 a::after {
+  content: ">";
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  color: var(--b24-ink);
+  font-weight: 900;
+}
+
 .b24-myshop-page .shopMain h3 strong {
+  display: block;
   color: var(--b24-accent);
   font-size: 12px;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.b24-myshop-page .shopMain p {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.b24-myshop-page .shopMain p a {
+  display: block !important;
+  width: auto !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .b24-order-history-page [module="MyShop_OrderHistoryHead"],
