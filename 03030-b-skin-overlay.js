@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.5";
+  var VERSION = "2026-06-19.6";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -136,9 +136,22 @@
       if (onclick) button.setAttribute("onclick", onclick);
       button.setAttribute("aria-label", image.getAttribute("alt") || "장바구니 담기");
       image.setAttribute("data-b24-normalized", "true");
+      image.className += " b24-source-action-hidden";
       image.parentNode.insertBefore(button, image);
       image.style.display = "none";
     });
+  }
+
+  function installProductListActionObserver() {
+    normalizeProductListActions();
+    [250, 750, 1500, 3000].forEach(function (delay) {
+      window.setTimeout(normalizeProductListActions, delay);
+    });
+    if (!document.body || !window.MutationObserver) return;
+    var observer = new MutationObserver(function () {
+      normalizeProductListActions();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   var configs = [
@@ -180,7 +193,7 @@
   ready(function () {
     if (!isReviewSkin()) return;
     injectCss();
-    normalizeProductListActions();
+    installProductListActionObserver();
 
     var path = normalizedPath();
     var config = configs.find(function (item) {
