@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.4";
+  var VERSION = "2026-06-19.5";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -124,6 +124,23 @@
     document.body.classList.add("b24-overlay-active", "b24-overlay-" + config.marker);
   }
 
+  function normalizeProductListActions() {
+    if (!document.querySelector(".b24-list-page")) return;
+    Array.prototype.forEach.call(document.querySelectorAll("img.ec-admin-icon.cart"), function (image) {
+      if (image.getAttribute("data-b24-normalized") === "true") return;
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "b24-list-action b24-list-action-cart";
+      button.textContent = "장바구니";
+      var onclick = image.getAttribute("onclick");
+      if (onclick) button.setAttribute("onclick", onclick);
+      button.setAttribute("aria-label", image.getAttribute("alt") || "장바구니 담기");
+      image.setAttribute("data-b24-normalized", "true");
+      image.parentNode.insertBefore(button, image);
+      image.style.display = "none";
+    });
+  }
+
   var configs = [
     {
       marker: "cart",
@@ -163,6 +180,7 @@
   ready(function () {
     if (!isReviewSkin()) return;
     injectCss();
+    normalizeProductListActions();
 
     var path = normalizedPath();
     var config = configs.find(function (item) {
