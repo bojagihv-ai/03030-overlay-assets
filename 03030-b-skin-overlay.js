@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.12";
+  var VERSION = "2026-06-20.1";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -212,6 +212,12 @@
     if (path === "/order/orderform.html" || path.indexOf("/order/orderform.html") !== -1) {
       document.body.classList.add("b24-overlay-active", "b24-overlay-orderform");
     }
+    if (path === "/myshop/index.html" || path.indexOf("/myshop/index.html") !== -1) {
+      document.body.classList.add("b24-overlay-active", "b24-overlay-myshop");
+    }
+    if (path === "/myshop/order/list.html" || path.indexOf("/myshop/order/list.html") !== -1) {
+      document.body.classList.add("b24-overlay-active", "b24-overlay-order-history");
+    }
   }
 
   var configs = [
@@ -239,14 +245,36 @@
     },
     {
       marker: "board",
-      match: "/board/free/list.html",
+      match: "/board/",
       className: "b24-flow-page b24-board-page",
       eyebrow: "고객 안내",
       title: "게시판",
       body: "공지와 문의 글을 차분하게 훑어보고 필요한 글을 빠르게 찾을 수 있게 정리했습니다.",
       facts: ["공지 확인", "게시글 검색", "글쓰기 연결"],
-      targetSelectors: ['[module="Board_ListPackage_1002"]', ".xans-board-listpackage-1002", ".xans-board-listpackage"],
+      targetSelectors: ['[module^="Board_ListPackage"]', ".xans-board-listpackage-1002", ".xans-board-listpackage"],
       extraSelectors: []
+    },
+    {
+      marker: "myshop",
+      match: "/myshop/index.html",
+      className: "b24-flow-page b24-myshop-page",
+      eyebrow: "회원 쇼핑",
+      title: "마이쇼핑",
+      body: "주문내역, 적립금, 관심상품, 문의 관리까지 재구매에 필요한 메뉴를 한 화면에서 찾게 정리했습니다.",
+      facts: ["주문내역 조회", "관심상품 확인", "문의/배송 주소 관리"],
+      targetSelectors: ['[module="myshop_benefit"]', ".xans-myshop-benefit", '[module="myshop_bankbook"]', ".xans-myshop-bankbook", "#myshopMain", '[module="myshop_main"]', ".xans-myshop-main"],
+      extraSelectors: ['[module="myshop_bankbook"]', ".xans-myshop-bankbook", "#myshopMain", '[module="myshop_main"]', ".xans-myshop-main", '[module="Myshop_InquiryDash"]']
+    },
+    {
+      marker: "order-history",
+      match: "/myshop/order/list.html",
+      className: "b24-flow-page b24-order-history-page",
+      eyebrow: "주문 관리",
+      title: "주문조회",
+      body: "배송 상태와 구매 내역을 날짜, 주문번호, 상품 기준으로 빠르게 훑을 수 있게 정리했습니다.",
+      facts: ["주문 상태 확인", "기간 검색", "배송/취소 내역 확인"],
+      targetSelectors: ['[module="MyShop_OrderHistoryHead"]', ".xans-myshop-orderhistoryhead", '[module="MyShop_OrderHistoryList"]', ".xans-myshop-orderhistorylist", ".orderListArea", ".titleArea"],
+      extraSelectors: ['[module="MyShop_OrderHistoryTab"]', ".xans-myshop-orderhistorytab", '[module="MyShop_OrderHistoryHead"]', ".xans-myshop-orderhistoryhead", '[module="MyShop_OrderHistoryList"]', ".xans-myshop-orderhistorylist", ".orderListArea", ".ec-base-paginate", ".paginate"]
     }
   ];
 

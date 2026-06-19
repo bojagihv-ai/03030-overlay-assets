@@ -127,6 +127,8 @@ body.b24-overlay-active #quick {
 
 .b24-flow-page input[type="text"],
 .b24-flow-page input[type="password"],
+.b24-flow-page input[type="date"],
+.b24-flow-page input[type="search"],
 .b24-flow-page select {
   max-width: 100%;
   min-height: 36px;
@@ -194,6 +196,8 @@ body.b24-overlay-active #quick {
 .b24-flow-page a:has(> img[alt="견적서출력"])::after { content: "견적서 출력"; }
 .b24-flow-page a:has(> img[alt="글쓰기"])::after { content: "글쓰기"; }
 .b24-flow-page a:has(> img[alt="찾기"])::after { content: "찾기"; }
+.b24-flow-page a:has(> img[alt="조회"])::after { content: "조회"; }
+.b24-flow-page a:has(> img[alt="확인"])::after { content: "확인"; }
 .b24-flow-page a:has(> img[alt="글 이동"])::after { content: "글 이동"; }
 .b24-flow-page a:has(> img[alt="글 복사"])::after { content: "글 복사"; }
 .b24-flow-page a:has(> img[alt="장바구니담기"])::after { content: "장바구니 담기"; }
@@ -373,12 +377,175 @@ body.b24-overlay-active #quick {
 .b24-board-page .xans-board-paging-1002,
 .b24-board-page .xans-board-paging,
 .b24-cart-page [module="myshop_wishlistpaging"],
-.b24-cart-page .xans-myshop-wishlistpaging {
+.b24-cart-page .xans-myshop-wishlistpaging,
+.b24-order-history-page .ec-base-paginate,
+.b24-order-history-page .paginate {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
   margin-top: 16px;
+}
+
+.b24-myshop-page [module="myshop_benefit"],
+.b24-myshop-page [module="myshop_bankbook"],
+.b24-myshop-page .xans-myshop-benefit,
+.b24-myshop-page .xans-myshop-bankbook {
+  min-width: 0;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  margin-bottom: 14px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.b24-myshop-page .infoWrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.b24-myshop-page .myThumb img {
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  object-fit: cover;
+  background: #fff;
+}
+
+.b24-myshop-page .myInfo,
+.b24-myshop-page .invite,
+.b24-myshop-page .shopMain p {
+  color: var(--b24-muted);
+  line-height: 1.65;
+}
+
+.b24-myshop-page [module="myshop_bankbook"] ul,
+.b24-myshop-page .xans-myshop-bankbook ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.b24-myshop-page [module="myshop_bankbook"] li,
+.b24-myshop-page .xans-myshop-bankbook li {
+  display: grid;
+  gap: 5px;
+  border: 1px solid rgba(31,42,36,.1);
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+}
+
+.b24-myshop-page [module="myshop_bankbook"] .title,
+.b24-myshop-page .xans-myshop-bankbook .title {
+  color: var(--b24-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.b24-myshop-page [module="myshop_bankbook"] .data,
+.b24-myshop-page .xans-myshop-bankbook .data {
+  color: var(--b24-ink);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.b24-myshop-page #myshopMain,
+.b24-myshop-page [module="myshop_main"],
+.b24-myshop-page .xans-myshop-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.b24-myshop-page .shopMain {
+  min-width: 0;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.b24-myshop-page .shopMain h3 {
+  margin: 0 0 8px;
+}
+
+.b24-myshop-page .shopMain h3 a {
+  display: grid;
+  gap: 4px;
+  color: var(--b24-ink);
+  text-decoration: none;
+}
+
+.b24-myshop-page .shopMain h3 strong {
+  color: var(--b24-accent);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.b24-order-history-page [module="MyShop_OrderHistoryHead"],
+.b24-order-history-page .xans-myshop-orderhistoryhead,
+.b24-order-history-page .stateSelect,
+.b24-order-history-page .ec-base-box {
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  margin-bottom: 14px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.b24-order-history-page [module="MyShop_OrderHistoryTab"] ul,
+.b24-order-history-page .xans-myshop-orderhistorytab ul,
+.b24-order-history-page .stateSelect,
+.b24-order-history-page .ec-base-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.b24-order-history-page [module="MyShop_OrderHistoryTab"] ul,
+.b24-order-history-page .xans-myshop-orderhistorytab ul {
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.b24-order-history-page [module="MyShop_OrderHistoryTab"] a,
+.b24-order-history-page .xans-myshop-orderhistorytab a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid var(--b24-line);
+  border-radius: 6px;
+  background: #fff;
+  padding: 0 12px;
+  color: var(--b24-ink);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.b24-order-history-page .orderListArea,
+.b24-order-history-page [module="MyShop_OrderHistoryList"],
+.b24-order-history-page .xans-myshop-orderhistorylist {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.b24-order-history-page .orderListArea table,
+.b24-order-history-page [module="MyShop_OrderHistoryList"] table,
+.b24-order-history-page .xans-myshop-orderhistorylist table {
+  min-width: 760px;
 }
 
 @media (max-width: 1060px) {
@@ -460,6 +627,72 @@ body.b24-overlay-active #quick {
   .b24-board-page .boardList td a {
     color: inherit !important;
     text-decoration: none;
+  }
+
+  .b24-myshop-page .infoWrap {
+    grid-template-columns: 1fr;
+  }
+
+  .b24-myshop-page #myshopMain,
+  .b24-myshop-page [module="myshop_main"],
+  .b24-myshop-page .xans-myshop-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .b24-order-history-page .orderListArea,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"],
+  .b24-order-history-page .xans-myshop-orderhistorylist {
+    overflow-x: visible;
+  }
+
+  .b24-order-history-page .orderListArea table,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] table,
+  .b24-order-history-page .xans-myshop-orderhistorylist table {
+    display: block;
+    min-width: 0 !important;
+    border: 0;
+  }
+
+  .b24-order-history-page .orderListArea colgroup,
+  .b24-order-history-page .orderListArea thead,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] colgroup,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] thead,
+  .b24-order-history-page .xans-myshop-orderhistorylist colgroup,
+  .b24-order-history-page .xans-myshop-orderhistorylist thead {
+    display: none !important;
+  }
+
+  .b24-order-history-page .orderListArea tbody,
+  .b24-order-history-page .orderListArea tr,
+  .b24-order-history-page .orderListArea td,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] tbody,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] tr,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] td,
+  .b24-order-history-page .xans-myshop-orderhistorylist tbody,
+  .b24-order-history-page .xans-myshop-orderhistorylist tr,
+  .b24-order-history-page .xans-myshop-orderhistorylist td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .b24-order-history-page .orderListArea tr,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] tr,
+  .b24-order-history-page .xans-myshop-orderhistorylist tr {
+    border: 1px solid var(--b24-line);
+    border-radius: 8px;
+    margin: 8px 0;
+    padding: 10px 12px;
+    background: #fff;
+  }
+
+  .b24-order-history-page .orderListArea td,
+  .b24-order-history-page [module="MyShop_OrderHistoryList"] td,
+  .b24-order-history-page .xans-myshop-orderhistorylist td {
+    border: 0 !important;
+    padding: 4px 0 !important;
+    text-align: left !important;
+    white-space: normal !important;
   }
 }
 
