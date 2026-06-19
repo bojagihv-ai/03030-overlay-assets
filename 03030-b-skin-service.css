@@ -916,10 +916,22 @@ body:has(.b24-list-page) .b24-list-page .prdList .status .button .option a.b24-l
 
 body:has(.b24-list-page) .b24-list-page .prdList .status .button {
   gap: 6px;
+  align-items: center;
 }
 
 body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action-option {
+  display: inline-flex !important;
   min-width: 48px;
+  box-sizing: border-box;
+  line-height: normal !important;
+  white-space: nowrap;
+}
+
+body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
 }
 
 body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="Cart"]) img,
