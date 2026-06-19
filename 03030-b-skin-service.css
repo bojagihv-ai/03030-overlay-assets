@@ -981,7 +981,221 @@ body:has(.b24-list-page) .b24-list-page img.b24-source-action-hidden {
   pointer-events: none !important;
 }
 
+/* Phase 19: order form inner polish for review skin order flow. */
+body.b24-overlay-orderform #contents {
+  padding-bottom: 48px;
+}
+
+body.b24-overlay-orderform .titleArea {
+  border-bottom: 1px solid rgba(31,42,36,.14);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+}
+
+body.b24-overlay-orderform .titleArea h2,
+body.b24-overlay-orderform h3,
+body.b24-overlay-orderform h4 {
+  color: var(--b24-ink) !important;
+  letter-spacing: 0;
+}
+
+body.b24-overlay-orderform .ec-base-table,
+body.b24-overlay-orderform .orderArea,
+body.b24-overlay-orderform .xans-order-form,
+body.b24-overlay-orderform .xans-order-normallist,
+body.b24-overlay-orderform [class*="xans-order-"] {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+body.b24-overlay-orderform .ec-base-table,
+body.b24-overlay-orderform .xans-order-normallist,
+body.b24-overlay-orderform .xans-order-form {
+  overflow-x: auto;
+}
+
+body.b24-overlay-orderform table {
+  width: 100% !important;
+  border-color: rgba(31,42,36,.12) !important;
+  background: rgba(255,255,255,.96) !important;
+}
+
+body.b24-overlay-orderform th {
+  background: #f4f8f6 !important;
+  color: var(--b24-ink) !important;
+  font-weight: 900 !important;
+}
+
+body.b24-overlay-orderform td {
+  color: var(--b24-ink) !important;
+}
+
+body.b24-overlay-orderform input[type="text"],
+body.b24-overlay-orderform input[type="password"],
+body.b24-overlay-orderform input[type="tel"],
+body.b24-overlay-orderform input[type="email"],
+body.b24-overlay-orderform select,
+body.b24-overlay-orderform textarea {
+  max-width: 100%;
+  min-height: 34px;
+  border: 1px solid rgba(31,42,36,.16) !important;
+  border-radius: 6px;
+  background: #fff !important;
+  color: var(--b24-ink) !important;
+  box-sizing: border-box;
+}
+
+body.b24-overlay-orderform textarea {
+  min-height: 72px;
+  padding: 10px;
+  line-height: 1.55;
+}
+
+body.b24-overlay-orderform a:has(> img[alt="결제하기"]),
+body.b24-overlay-orderform a:has(> img[alt="주문하기"]) {
+  min-height: 44px;
+  border-color: var(--b24-ink) !important;
+  background: var(--b24-ink) !important;
+  color: #fff !important;
+  padding: 0 22px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+body.b24-overlay-orderform a:has(> img[alt="결제하기"])::after {
+  content: "결제하기";
+}
+
+body.b24-overlay-orderform a:has(> img[alt="주문하기"])::after {
+  content: "주문하기";
+}
+
+body.b24-overlay-orderform .total,
+body.b24-overlay-orderform .totalPrice,
+body.b24-overlay-orderform #total_price,
+body.b24-overlay-orderform strong {
+  letter-spacing: 0;
+}
+
 @media (max-width: 720px) {
+  body.b24-overlay-orderform #container {
+    width: calc(100% - 24px) !important;
+  }
+
+  body.b24-overlay-orderform #contents {
+    width: 100% !important;
+  }
+
+  body.b24-overlay-orderform .ec-base-table,
+  body.b24-overlay-orderform .orderArea,
+  body.b24-overlay-orderform .xans-order-form,
+  body.b24-overlay-orderform .xans-order-normallist {
+    overflow-x: visible !important;
+  }
+
+  body.b24-overlay-orderform table,
+  body.b24-overlay-orderform colgroup,
+  body.b24-overlay-orderform thead,
+  body.b24-overlay-orderform tbody,
+  body.b24-overlay-orderform tr,
+  body.b24-overlay-orderform th,
+  body.b24-overlay-orderform td {
+    box-sizing: border-box;
+  }
+
+  body.b24-overlay-orderform table {
+    display: block !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  body.b24-overlay-orderform colgroup,
+  body.b24-overlay-orderform thead {
+    display: none !important;
+  }
+
+  body.b24-overlay-orderform tbody,
+  body.b24-overlay-orderform tr,
+  body.b24-overlay-orderform th,
+  body.b24-overlay-orderform td {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  body.b24-overlay-orderform tr {
+    border: 1px solid rgba(31,42,36,.12) !important;
+    border-radius: 8px;
+    margin: 0 0 10px !important;
+    padding: 12px !important;
+    background: rgba(255,255,255,.94) !important;
+  }
+
+  body.b24-overlay-orderform th {
+    border: 0 !important;
+    background: transparent !important;
+    padding: 0 0 8px !important;
+    color: var(--b24-muted) !important;
+    font-size: 12px !important;
+    text-align: left !important;
+  }
+
+  body.b24-overlay-orderform td {
+    border: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    line-height: 1.65;
+  }
+
+  body.b24-overlay-orderform td img {
+    max-width: 92px;
+    height: auto;
+    border: 1px solid rgba(31,42,36,.1);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  body.b24-overlay-orderform input[type="text"],
+  body.b24-overlay-orderform input[type="password"],
+  body.b24-overlay-orderform input[type="tel"],
+  body.b24-overlay-orderform input[type="email"],
+  body.b24-overlay-orderform select,
+  body.b24-overlay-orderform textarea {
+    width: 100% !important;
+    min-height: 38px;
+    margin: 3px 0;
+  }
+
+  body.b24-overlay-orderform select[id*="phone"],
+  body.b24-overlay-orderform select[id*="Phone"],
+  body.b24-overlay-orderform select[id*="tel"],
+  body.b24-overlay-orderform select[id*="Tel"],
+  body.b24-overlay-orderform select[id*="email"],
+  body.b24-overlay-orderform input[id*="phone"],
+  body.b24-overlay-orderform input[id*="Phone"],
+  body.b24-overlay-orderform input[id*="tel"],
+  body.b24-overlay-orderform input[id*="Tel"],
+  body.b24-overlay-orderform input[id*="email"] {
+    display: inline-block;
+    width: min(100%, 150px) !important;
+    vertical-align: middle;
+  }
+
+  body.b24-overlay-orderform #oaddr1,
+  body.b24-overlay-orderform #oaddr2,
+  body.b24-overlay-orderform #raddr1,
+  body.b24-overlay-orderform #raddr2,
+  body.b24-overlay-orderform #bankaccount {
+    width: 100% !important;
+  }
+
+  body.b24-overlay-orderform a:has(> img[alt="결제하기"]),
+  body.b24-overlay-orderform a:has(> img[alt="주문하기"]) {
+    width: 100%;
+    margin-top: 8px;
+  }
+
   body:has(.b24-hero) .b24-hero {
     grid-template-columns: minmax(0, 1fr);
   }

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.10";
+  var VERSION = "2026-06-19.11";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -208,6 +208,12 @@
     topline.setAttribute("data-b24-detail-enhanced", "true");
   }
 
+  function tagServicePath(path) {
+    if (path === "/order/orderform.html" || path.indexOf("/order/orderform.html") !== -1) {
+      document.body.classList.add("b24-overlay-active", "b24-overlay-orderform");
+    }
+  }
+
   var configs = [
     {
       marker: "cart",
@@ -251,6 +257,7 @@
     enhanceProductDetailTopline();
 
     var path = normalizedPath();
+    tagServicePath(path);
     var config = configs.find(function (item) {
       return path === item.match || path.indexOf(item.match) !== -1;
     });
