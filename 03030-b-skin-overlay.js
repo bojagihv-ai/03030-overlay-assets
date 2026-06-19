@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.8";
+  var VERSION = "2026-06-19.9";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -168,6 +168,46 @@
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
+  function cleanText(value) {
+    return String(value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function findDetailProductName() {
+    var rows = document.querySelectorAll(".b24-purchase-panel tr, .infoArea tr");
+    for (var i = 0; i < rows.length; i += 1) {
+      var row = rows[i];
+      var label = cleanText((row.querySelector("th") || {}).textContent);
+      if (label.indexOf("상품명") === -1) continue;
+      var value = cleanText((row.querySelector("td") || {}).textContent);
+      if (value) return value;
+    }
+    return cleanText((document.querySelector(".b24-purchase-panel h3, .infoArea h3") || {}).textContent);
+  }
+
+  function findDetailCategoryName() {
+    var items = Array.prototype.slice.call(document.querySelectorAll(".b24-detail-page .path li, .path li, .path strong"));
+    var names = items
+      .map(function (item) { return cleanText(item.textContent).replace(/^>+/, "").trim(); })
+      .filter(function (item) { return item && item !== "홈"; });
+    return names[names.length - 1] || "";
+  }
+
+  function enhanceProductDetailTopline() {
+    var topline = document.querySelector(".b24-detail-page .b24-detail-topline, .b24-detail-topline");
+    if (!topline || topline.getAttribute("data-b24-detail-enhanced") === "true") return;
+    var strong = topline.querySelector("strong");
+    if (!strong) return;
+    var productName = findDetailProductName();
+    if (!productName) return;
+    var categoryName = findDetailCategoryName();
+    var context = document.createElement("span");
+    context.className = "b24-detail-context";
+    context.textContent = (categoryName ? categoryName + " | " : "") + "옵션, 수량, 배송 전 확인";
+    strong.textContent = productName;
+    topline.appendChild(context);
+    topline.setAttribute("data-b24-detail-enhanced", "true");
+  }
+
   var configs = [
     {
       marker: "cart",
@@ -208,6 +248,7 @@
     if (!isReviewSkin()) return;
     injectCss();
     installProductListActionObserver();
+    enhanceProductDetailTopline();
 
     var path = normalizedPath();
     var config = configs.find(function (item) {

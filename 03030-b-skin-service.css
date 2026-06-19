@@ -865,6 +865,26 @@ body:has(.b24-detail-topline) .b24-detail-topline strong {
   overflow-wrap: break-word;
 }
 
+body:has(.b24-detail-topline) .b24-detail-topline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 18px;
+}
+
+body:has(.b24-detail-topline) .b24-detail-topline strong {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 900;
+}
+
+body:has(.b24-detail-topline) .b24-detail-context {
+  grid-column: 2;
+  color: var(--b24-muted);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
 body:has(.b24-hero) .b24-hero {
   grid-template-columns: minmax(0, 1.12fr) minmax(280px, .72fr);
 }
@@ -971,6 +991,14 @@ body:has(.b24-list-page) .b24-list-page img.b24-source-action-hidden {
 
   body:has(.b24-detail-shell) .b24-detail-shell .keyImg {
     min-height: 280px !important;
+  }
+
+  body:has(.b24-detail-topline) .b24-detail-topline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body:has(.b24-detail-topline) .b24-detail-context {
+    grid-column: 1;
   }
 }
 /* Codex 03030 B service pages end */
