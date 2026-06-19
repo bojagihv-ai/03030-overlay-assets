@@ -854,4 +854,80 @@ body.b24-overlay-active #quick {
     line-height: 1.7;
   }
 }
+
+/* Phase 16: sitewide skin7 finishing touches. */
+body:has(.b24-hero) .b24-hero h2,
+body:has(.b24-hero) .b24-hero p,
+body:has(.b24-list-intro) .b24-list-intro h1,
+body:has(.b24-list-intro) .b24-list-intro p,
+body:has(.b24-detail-topline) .b24-detail-topline strong {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body:has(.b24-hero) .b24-hero {
+  grid-template-columns: minmax(0, 1.12fr) minmax(280px, .72fr);
+}
+
+body:has(.b24-hero) .b24-hero p {
+  max-width: 720px;
+}
+
+body:has(.b24-hero) .b24-hero-visual {
+  background: #fff;
+}
+
+body:has(.b24-hero) .b24-hero-visual img {
+  object-fit: contain !important;
+  background: #fff;
+}
+
+body:has(.b24-detail-shell) .b24-detail-shell .keyImg {
+  min-height: clamp(320px, 34vw, 460px) !important;
+  padding: clamp(14px, 2.3vw, 22px) !important;
+}
+
+body:has(.b24-detail-shell) .b24-detail-shell .keyImg img {
+  max-height: 430px !important;
+}
+
+body:has(.b24-list-page) .b24-list-page .prdList .status a,
+body:has(.b24-list-page) .b24-list-page .prdList .status button {
+  min-height: 30px;
+  border-radius: 6px;
+  color: var(--b24-ink) !important;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="Cart"]) img,
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="cart"]) img,
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="장바구니"]) img {
+  display: none !important;
+}
+
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="Cart"])::after,
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="cart"])::after,
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="장바구니"])::after {
+  content: "장바구니";
+}
+
+@media (max-width: 720px) {
+  body:has(.b24-hero) .b24-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body:has(.b24-hero) .b24-hero-visual {
+    min-height: 260px;
+  }
+
+  body:has(.b24-hero) .b24-hero-visual img {
+    min-height: 260px;
+  }
+
+  body:has(.b24-detail-shell) .b24-detail-shell .keyImg {
+    min-height: 280px !important;
+  }
+}
 /* Codex 03030 B service pages end */

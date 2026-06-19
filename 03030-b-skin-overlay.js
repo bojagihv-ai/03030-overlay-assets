@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.3";
+  var VERSION = "2026-06-19.4";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -162,12 +162,13 @@
 
   ready(function () {
     if (!isReviewSkin()) return;
+    injectCss();
+
     var path = normalizedPath();
     var config = configs.find(function (item) {
       return path === item.match || path.indexOf(item.match) !== -1;
     });
     if (!config) return;
-    injectCss();
     wrap(config);
   });
 })();
