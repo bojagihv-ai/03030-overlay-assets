@@ -894,6 +894,9 @@ body:has(.b24-detail-shell) .b24-detail-shell .keyImg img {
 body:has(.b24-list-page) .b24-list-page .prdList .status a,
 body:has(.b24-list-page) .b24-list-page .prdList .status button,
 body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 30px;
   padding: 0 9px;
   border: 1px solid var(--b24-line);
@@ -906,9 +909,23 @@ body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action {
   cursor: pointer;
 }
 
+body:has(.b24-list-page) .b24-list-page .prdList .status .button .option,
+body:has(.b24-list-page) .b24-list-page .prdList .status .button .option a.b24-list-action-option {
+  width: auto !important;
+}
+
+body:has(.b24-list-page) .b24-list-page .prdList .status .button {
+  gap: 6px;
+}
+
+body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action-option {
+  min-width: 48px;
+}
+
 body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="Cart"]) img,
 body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="cart"]) img,
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="장바구니"]) img {
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="장바구니"]) img,
+body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img.option_preview) img {
   display: none !important;
 }
 

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-19.6";
+  var VERSION = "2026-06-19.7";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -126,6 +126,20 @@
 
   function normalizeProductListActions() {
     if (!document.querySelector(".b24-list-page")) return;
+    Array.prototype.forEach.call(document.querySelectorAll("img.option_preview"), function (image) {
+      if (image.getAttribute("data-b24-normalized") === "true") return;
+      var anchor = image.closest("a");
+      if (!anchor) return;
+      var text = document.createElement("span");
+      text.className = "b24-list-action-text";
+      text.textContent = "옵션";
+      anchor.className = (anchor.className ? anchor.className + " " : "") + "b24-list-action b24-list-action-option";
+      anchor.setAttribute("aria-label", image.getAttribute("alt") || "옵션 미리보기");
+      anchor.insertBefore(text, image);
+      image.setAttribute("data-b24-normalized", "true");
+      image.className += " b24-source-action-hidden";
+      image.style.display = "none";
+    });
     Array.prototype.forEach.call(document.querySelectorAll("img.ec-admin-icon.cart"), function (image) {
       if (image.getAttribute("data-b24-normalized") === "true") return;
       var button = document.createElement("button");
