@@ -1190,6 +1190,27 @@ body.b24-overlay-orderform strong {
     width: 100% !important;
   }
 
+  body.b24-overlay-orderform #zipcodeLayer {
+    left: 50% !important;
+    right: auto !important;
+    width: calc(100vw - 24px) !important;
+    max-width: 600px !important;
+    max-height: 76vh !important;
+    transform: translateX(-50%);
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+
+  body.b24-overlay-orderform #iframeZipcode,
+  body.b24-overlay-orderform #zipcodeLayer iframe {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: min(76vh, 693px) !important;
+    border: 0;
+    box-sizing: border-box;
+  }
+
   body.b24-overlay-orderform a:has(> img[alt="결제하기"]),
   body.b24-overlay-orderform a:has(> img[alt="주문하기"]) {
     width: 100%;
