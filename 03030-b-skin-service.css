@@ -872,6 +872,11 @@ body:has(.b24-detail-topline) .b24-detail-topline {
   gap: 8px 18px;
 }
 
+body:has(.b24-detail-topline) .b24-detail-topline .b24-badge {
+  width: auto;
+  justify-self: start;
+}
+
 body:has(.b24-detail-topline) .b24-detail-topline strong {
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 900;
