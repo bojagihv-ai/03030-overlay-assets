@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-20.2";
+  var VERSION = "2026-06-21.1";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -44,6 +44,137 @@
       if (node) return node;
     }
     return null;
+  }
+
+  function addClass(node, className) {
+    if (node && !node.classList.contains(className)) node.classList.add(className);
+  }
+
+  function createText(tagName, className, text) {
+    var node = document.createElement(tagName);
+    if (className) node.className = className;
+    node.textContent = text;
+    return node;
+  }
+
+  function mainContent() {
+    return firstExisting(["#contents", "#container", "#wrap", "body"]);
+  }
+
+  function findUsableImage() {
+    var images = document.querySelectorAll(".prdList img, .xans-product-listmain img, .keyImg img, #contents img, #header img");
+    for (var i = 0; i < images.length; i += 1) {
+      var image = images[i];
+      var src = image.currentSrc || image.src || image.getAttribute("ec-data-src") || image.getAttribute("data-src");
+      if (!src || src.indexOf("blank") !== -1) continue;
+      return src;
+    }
+    return "https://03030.co.kr/web/upload/category/logo/57d2d7bcd5bff2b1423a31cdad1c9ffb_5_top.jpg";
+  }
+
+  function isHomePath(path) {
+    return path === "/" || path === "/index.html";
+  }
+
+  function isListPath(path) {
+    return path.indexOf("/product/list.html") !== -1 || path.indexOf("/product/search.html") !== -1;
+  }
+
+  function isDetailPath(path) {
+    return path.indexOf("/product/detail.html") !== -1;
+  }
+
+  function ensureHomeHero(path) {
+    if (!isHomePath(path) || document.querySelector(".b24-hero")) return;
+    var container = mainContent();
+    if (!container) return;
+
+    var hero = document.createElement("section");
+    hero.className = "b24-hero";
+    hero.setAttribute("data-b24-overlay-page", "home");
+
+    var copy = document.createElement("div");
+    copy.className = "b24-hero-copy";
+    copy.appendChild(createText("span", "b24-eyebrow", "03030 전통 포장"));
+    copy.appendChild(createText("h2", "", "보자기와 포장재를 더 고급스럽게 고르는 화면"));
+    copy.appendChild(createText("p", "", "기존 상품과 메뉴 구성은 그대로 두고, 첫 화면의 인상과 구매 흐름만 차분한 프리미엄 톤으로 정리했습니다."));
+
+    var actions = document.createElement("div");
+    actions.className = "b24-hero-actions";
+    actions.appendChild(createText("a", "b24-primary-link", "추천 상품 보기"));
+    actions.lastChild.setAttribute("href", "/product/list.html?cate_no=4");
+    actions.appendChild(createText("a", "b24-secondary-link", "문의 게시판"));
+    actions.lastChild.setAttribute("href", "/board/free/list.html?board_no=6");
+    copy.appendChild(actions);
+
+    var visual = document.createElement("div");
+    visual.className = "b24-hero-visual";
+    var image = document.createElement("img");
+    image.src = findUsableImage();
+    image.alt = "03030 보자기 대표 상품";
+    visual.appendChild(image);
+
+    hero.appendChild(copy);
+    hero.appendChild(visual);
+    container.insertBefore(hero, container.firstChild);
+    document.body.classList.add("b24-overlay-active", "b24-overlay-home");
+  }
+
+  function ensureListPage(path) {
+    if (!isListPath(path)) return;
+    var listRoot = firstExisting([".xans-product-normalpackage", ".xans-product-listnormal", ".ec-base-product", ".prdList"]);
+    var container = closestContent(listRoot) || mainContent();
+    if (!container) return;
+
+    addClass(container, "b24-list-page");
+    document.body.classList.add("b24-overlay-active", "b24-overlay-list");
+
+    if (!document.querySelector(".b24-list-intro")) {
+      var intro = document.createElement("section");
+      intro.className = "b24-list-intro";
+      intro.appendChild(createText("span", "b24-eyebrow", "상품 목록"));
+      intro.appendChild(createText("h1", "", "용도별 보자기와 포장재"));
+      intro.appendChild(createText("p", "", "기존 카테고리와 상품 배열은 유지하면서, 목록의 시작점을 더 선명하게 정리했습니다."));
+      container.insertBefore(intro, container.firstChild);
+    }
+
+    normalizeProductListActions();
+  }
+
+  function findDetailAnchor() {
+    return firstExisting([".detailArea", ".xans-product-detail", ".xans-product-detaildesign", ".infoArea"]);
+  }
+
+  function ensureDetailPage(path) {
+    if (!isDetailPath(path)) return;
+    var anchor = findDetailAnchor();
+    var container = closestContent(anchor) || mainContent();
+    if (!container) return;
+
+    addClass(container, "b24-detail-page");
+    document.body.classList.add("b24-overlay-active", "b24-overlay-detail");
+
+    var detailShell = firstExisting([".detailArea", ".xans-product-detail"]);
+    if (detailShell) addClass(detailShell, "b24-detail-shell");
+
+    var purchasePanel = firstExisting([".infoArea", ".xans-product-detaildesign", ".xans-product-option", ".detailArea"]);
+    if (purchasePanel) addClass(purchasePanel, "b24-purchase-panel");
+
+    if (!document.querySelector(".b24-detail-topline")) {
+      var topline = document.createElement("div");
+      topline.className = "b24-detail-topline";
+      topline.appendChild(createText("span", "b24-badge", "상세 보기"));
+      topline.appendChild(createText("strong", "", findDetailProductName() || cleanText(document.title) || "상품 상세"));
+      container.insertBefore(topline, detailShell || anchor || container.firstChild);
+    }
+
+    enhanceProductDetailTopline();
+  }
+
+  function applyLiveRootTransforms(path) {
+    ensureHomeHero(path);
+    ensureListPage(path);
+    ensureDetailPage(path);
   }
 
   function buildHero(config) {
@@ -282,9 +413,10 @@
     if (!isReviewSkin()) return;
     injectCss();
     installProductListActionObserver();
-    enhanceProductDetailTopline();
 
     var path = normalizedPath();
+    applyLiveRootTransforms(path);
+    enhanceProductDetailTopline();
     tagServicePath(path);
     var config = configs.find(function (item) {
       return path === item.match || path.indexOf(item.match) !== -1;
