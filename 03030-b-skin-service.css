@@ -231,7 +231,9 @@ body:has(.b24-detail-shell) .b24-detail-shell .infoArea {
 }
 
 body.b24-overlay-active #sidebar,
-body.b24-overlay-active #quick {
+body.b24-overlay-active #quick,
+body.b24-overlay-active #snb,
+body.b24-overlay-active .banner_left {
   display: none !important;
 }
 
