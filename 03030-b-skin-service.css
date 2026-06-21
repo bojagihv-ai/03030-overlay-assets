@@ -164,22 +164,6 @@ body.b24-overlay-detail {
   letter-spacing: 0;
 }
 
-body.b24-overlay-list .b24-list-page .prdList {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 22px;
-  align-items: stretch;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-
-body.b24-overlay-list .b24-list-page .prdList > li,
-body.b24-overlay-list .b24-list-page .prdList .item {
-  width: auto !important;
-  min-width: 0;
-  margin: 0 !important;
-}
-
 body.b24-overlay-list .b24-list-page .thumbnail,
 body.b24-overlay-list .b24-list-page .prdImg {
   overflow: hidden;
@@ -834,10 +818,6 @@ body.b24-overlay-active .banner_left {
   body:has(.b24-detail-shell) .b24-detail-shell,
   body:has(.b24-purchase-panel) .b24-purchase-panel {
     padding: 16px;
-  }
-
-  body.b24-overlay-list .b24-list-page .prdList {
-    grid-template-columns: minmax(0, 1fr);
   }
 
   .b24-flow-hero,
