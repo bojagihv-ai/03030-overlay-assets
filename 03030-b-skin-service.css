@@ -504,6 +504,27 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .xans-pr
   margin: 4px 0 0 !important;
 }
 
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .status,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .name,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .xans-product-listitem {
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  box-sizing: border-box;
+  text-align: left !important;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .status .button {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-start;
+}
+
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description {
   padding-top: 9px;
 }
