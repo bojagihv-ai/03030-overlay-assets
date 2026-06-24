@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-24.5";
+  var VERSION = "2026-06-24.6";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -61,7 +61,11 @@
       return typeof value === "number" && value > 0;
     });
     var compact = widths.some(function (value) { return value <= 640; });
-    if (compact) document.body.classList.add("b24-compact-viewport");
+    if (compact) {
+      var compactWidth = Math.max(320, Math.floor(Math.min.apply(Math, widths)));
+      document.body.classList.add("b24-compact-viewport");
+      document.body.style.setProperty("--b24-compact-width", compactWidth + "px");
+    }
   }
 
   function firstExisting(selectors) {

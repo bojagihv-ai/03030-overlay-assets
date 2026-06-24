@@ -374,10 +374,16 @@ body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listite
 
 body.b24-compact-viewport.b24-overlay-list #container,
 body.b24-compact-viewport.b24-overlay-list #contents {
-  width: 100% !important;
-  max-width: 100% !important;
+  width: var(--b24-compact-width, 390px) !important;
+  max-width: var(--b24-compact-width, 390px) !important;
   margin-right: 0 !important;
   margin-left: 0 !important;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page {
+  width: var(--b24-compact-width, 390px) !important;
+  max-width: var(--b24-compact-width, 390px) !important;
+  box-sizing: border-box;
 }
 
 body.b24-compact-viewport.b24-overlay-list .xans-product-menupackage .title h2 {
