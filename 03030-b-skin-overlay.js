@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-21.3";
+  var VERSION = "2026-06-21.4";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -128,16 +128,6 @@
 
     addClass(container, "b24-list-page");
     document.body.classList.add("b24-overlay-active", "b24-overlay-list");
-
-    if (!document.querySelector(".b24-list-intro")) {
-      var sourceTitle = cleanText((firstExisting([".titleArea h2", ".path strong", "h2 img"]) || {}).textContent);
-      var intro = document.createElement("section");
-      intro.className = "b24-list-intro";
-      intro.appendChild(createText("span", "b24-eyebrow", "상품 목록"));
-      intro.appendChild(createText("h1", "", sourceTitle || "상품 목록"));
-      intro.appendChild(createText("p", "", "기존 카테고리와 상품 배열은 그대로 유지하면서, 목록의 시작점만 더 선명하게 정리했습니다."));
-      container.insertBefore(intro, container.firstChild);
-    }
 
     normalizeProductListActions();
   }
