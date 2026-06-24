@@ -392,7 +392,11 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .xans-product-normalme
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .xans-product-listnormal,
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .function {
   width: var(--b24-compact-width, 390px) !important;
+  min-width: 0 !important;
   max-width: var(--b24-compact-width, 390px) !important;
+  inline-size: var(--b24-compact-width, 390px) !important;
+  min-inline-size: 0 !important;
+  max-inline-size: var(--b24-compact-width, 390px) !important;
   box-sizing: border-box;
 }
 
@@ -452,15 +456,33 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList {
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
   width: var(--b24-compact-width, 390px) !important;
+  min-width: 0 !important;
   max-width: var(--b24-compact-width, 390px) !important;
+  inline-size: var(--b24-compact-width, 390px) !important;
+  min-inline-size: 0 !important;
+  max-inline-size: var(--b24-compact-width, 390px) !important;
   padding: 0 10px !important;
   box-sizing: border-box;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page ul.prdList.column4,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page ul.prdList {
+  width: var(--b24-compact-width, 390px) !important;
+  min-width: 0 !important;
+  max-width: var(--b24-compact-width, 390px) !important;
+  inline-size: var(--b24-compact-width, 390px) !important;
+  min-inline-size: 0 !important;
+  max-inline-size: var(--b24-compact-width, 390px) !important;
 }
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li {
   float: none !important;
   width: auto !important;
   min-width: 0 !important;
+  max-width: 100% !important;
+  inline-size: auto !important;
+  min-inline-size: 0 !important;
+  max-inline-size: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
