@@ -176,6 +176,106 @@ body.b24-overlay-list .b24-list-page .thumbnail img,
 body.b24-overlay-list .b24-list-page .prdImg img {
   width: 100% !important;
   height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
+body.b24-overlay-list .b24-list-page .titleArea {
+  margin: 14px 0 18px !important;
+  padding: 15px 18px !important;
+  border: 1px solid rgba(197, 205, 199, .85);
+  border-left: 4px solid rgba(138, 46, 49, .68);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(247, 248, 246, .9)),
+    linear-gradient(90deg, rgba(76, 125, 98, .12), transparent 34%);
+  box-sizing: border-box;
+}
+
+body.b24-overlay-list .b24-list-page .titleArea h2,
+body.b24-overlay-list .b24-list-page .titleArea h3 {
+  margin: 0 !important;
+  color: var(--b24-ink) !important;
+  font-size: clamp(20px, 2.4vw, 28px) !important;
+  line-height: 1.25;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+body.b24-overlay-list .b24-list-page .prdList > li {
+  box-sizing: border-box;
+}
+
+body.b24-overlay-list .b24-list-page .prdList > li .thumbnail,
+body.b24-overlay-list .b24-list-page .prdList > li .prdImg {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(76, 125, 98, .08), transparent 42%),
+    linear-gradient(180deg, #fff, #fafbf9);
+  box-shadow: 0 8px 22px rgba(31, 42, 36, .06);
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+body.b24-overlay-list .b24-list-page .prdList > li .thumbnail::after,
+body.b24-overlay-list .b24-list-page .prdList > li .prdImg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(138, 46, 49, .12);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+body.b24-overlay-list .b24-list-page .prdList > li:hover .thumbnail,
+body.b24-overlay-list .b24-list-page .prdList > li:hover .prdImg {
+  border-color: rgba(76, 125, 98, .45);
+  box-shadow: 0 12px 30px rgba(31, 42, 36, .1);
+  transform: translateY(-2px);
+}
+
+body.b24-overlay-list .b24-list-page .prdList .thumbnail a,
+body.b24-overlay-list .b24-list-page .prdList .prdImg a {
+  display: block;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .description {
+  padding: 12px 2px 0;
+  color: var(--b24-muted);
+  text-align: left;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .description .name,
+body.b24-overlay-list .b24-list-page .prdList .description .name a,
+body.b24-overlay-list .b24-list-page .prdList .name a {
+  color: var(--b24-ink) !important;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 800;
+  letter-spacing: 0;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listitem {
+  margin: 8px 0 0;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listitem > li {
+  margin: 3px 0;
+  color: #5f6b62;
+  line-height: 1.36;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listitem strong.title {
+  margin-right: 5px;
+  color: #8a2e31;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listitem span {
+  color: #2e3a32;
+  font-weight: 650;
 }
 
 .b24-detail-topline {
@@ -1413,15 +1513,24 @@ body:has(.b24-detail-shell) .b24-detail-shell .keyImg img {
   max-height: 430px !important;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status a,
-body:has(.b24-list-page) .b24-list-page .prdList .status button,
-body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action {
+body.b24-overlay-list .b24-list-page .prdList .status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .status a,
+body.b24-overlay-list .b24-list-page .prdList .status button,
+body.b24-overlay-list .b24-list-page .prdList .status .b24-list-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 30px;
   padding: 0 9px;
-  border: 1px solid var(--b24-line);
+  border: 1px solid rgba(197, 205, 199, .95);
   border-radius: 6px;
   background: #fff;
   color: var(--b24-ink) !important;
@@ -1431,17 +1540,24 @@ body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action {
   cursor: pointer;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status .button .option,
-body:has(.b24-list-page) .b24-list-page .prdList .status .button .option a.b24-list-action-option {
+body.b24-overlay-list .b24-list-page .prdList .status a:hover,
+body.b24-overlay-list .b24-list-page .prdList .status button:hover,
+body.b24-overlay-list .b24-list-page .prdList .status .b24-list-action:hover {
+  border-color: rgba(76, 125, 98, .45);
+  background: #f8faf7;
+}
+
+body.b24-overlay-list .b24-list-page .prdList .status .button .option,
+body.b24-overlay-list .b24-list-page .prdList .status .button .option a.b24-list-action-option {
   width: auto !important;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status .button {
+body.b24-overlay-list .b24-list-page .prdList .status .button {
   gap: 6px;
   align-items: center;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action-option {
+body.b24-overlay-list .b24-list-page .prdList .status .b24-list-action-option {
   display: inline-flex !important;
   min-width: 48px;
   box-sizing: border-box;
@@ -1449,28 +1565,28 @@ body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action-option
   white-space: nowrap;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status .b24-list-action-text {
+body.b24-overlay-list .b24-list-page .prdList .status .b24-list-action-text {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1.2;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="Cart"]) img,
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="cart"]) img,
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="장바구니"]) img,
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img.option_preview) img {
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img[alt*="Cart"]) img,
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img[alt*="cart"]) img,
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img[alt*="장바구니"]) img,
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img.option_preview) img {
   display: none !important;
 }
 
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="Cart"])::after,
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="cart"])::after,
-body:has(.b24-list-page) .b24-list-page .prdList .status a:has(img[alt*="장바구니"])::after {
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img[alt*="Cart"])::after,
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img[alt*="cart"])::after,
+body.b24-overlay-list .b24-list-page .prdList .status a:has(img[alt*="장바구니"])::after {
   content: "장바구니";
 }
 
-body:has(.b24-list-page) .b24-list-page img[data-b24-normalized="true"],
-body:has(.b24-list-page) .b24-list-page img.b24-source-action-hidden {
+body.b24-overlay-list .b24-list-page img[data-b24-normalized="true"],
+body.b24-overlay-list .b24-list-page img.b24-source-action-hidden {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
