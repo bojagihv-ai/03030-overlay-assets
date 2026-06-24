@@ -439,8 +439,8 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory strong a
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList {
   display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 12px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
   padding: 0 10px !important;
   box-sizing: border-box;
 }
@@ -455,23 +455,53 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li {
 }
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .box {
+  display: grid !important;
+  grid-template-columns: minmax(116px, 42%) minmax(0, 1fr);
+  gap: 8px 12px;
+  align-items: start;
   width: auto !important;
   min-width: 0 !important;
   max-width: 100% !important;
   margin: 0 !important;
-  padding: 0 !important;
+  border: 1px solid rgba(197, 205, 199, .95);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px !important;
   box-sizing: border-box;
+  box-shadow: 0 8px 22px rgba(31, 42, 36, .06);
 }
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .box > a:has(img.thumb) {
+  grid-column: 1;
+  grid-row: 2 / span 3;
   width: 100% !important;
   box-sizing: border-box;
 }
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .chk {
+  grid-column: 1 / -1;
   display: block;
-  min-height: 18px;
-  text-align: center;
+  min-height: 16px;
+  text-align: right;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .status {
+  grid-column: 2;
+  grid-row: 2;
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .name {
+  grid-column: 2;
+  grid-row: 3;
+  margin: 0 !important;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .xans-product-listitem {
+  grid-column: 2;
+  grid-row: 4;
+  margin: 4px 0 0 !important;
 }
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description {
@@ -480,7 +510,8 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description 
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description .name,
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description .name a,
-body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .name a {
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .name a,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .name a {
   font-size: 12px;
   line-height: 1.38;
 }
