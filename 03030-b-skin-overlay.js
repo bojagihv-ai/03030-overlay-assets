@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-24.2";
+  var VERSION = "2026-06-24.3";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -36,6 +36,19 @@
     link.href = CSS_URL;
     link.setAttribute("data-b24-overlay-css", "03030");
     document.head.appendChild(link);
+  }
+
+  function ensureResponsiveViewport() {
+    var meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.name = "viewport";
+      document.head.appendChild(meta);
+    }
+    var content = meta.getAttribute("content") || "";
+    if (content.indexOf("width=device-width") === -1) {
+      meta.setAttribute("content", "width=device-width, initial-scale=1");
+    }
   }
 
   function firstExisting(selectors) {
@@ -402,6 +415,7 @@
 
   ready(function () {
     if (!isReviewSkin()) return;
+    ensureResponsiveViewport();
     injectCss();
     installProductListActionObserver();
 
