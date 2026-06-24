@@ -386,6 +386,16 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page {
   box-sizing: border-box;
 }
 
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .xans-product-menupackage,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .xans-product-normalpackage,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .xans-product-normalmenu,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .xans-product-listnormal,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .function {
+  width: var(--b24-compact-width, 390px) !important;
+  max-width: var(--b24-compact-width, 390px) !important;
+  box-sizing: border-box;
+}
+
 body.b24-compact-viewport.b24-overlay-list .xans-product-menupackage .title h2 {
   display: none;
 }
@@ -441,6 +451,8 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
+  width: var(--b24-compact-width, 390px) !important;
+  max-width: var(--b24-compact-width, 390px) !important;
   padding: 0 10px !important;
   box-sizing: border-box;
 }
@@ -476,6 +488,12 @@ body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .box > a
   grid-row: 2 / span 3;
   width: 100% !important;
   box-sizing: border-box;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .box > a:has(img.thumb) img.thumb {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li .chk {
