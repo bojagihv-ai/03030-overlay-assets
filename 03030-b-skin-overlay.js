@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-24.3";
+  var VERSION = "2026-06-24.4";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -49,6 +49,19 @@
     if (content.indexOf("width=device-width") === -1) {
       meta.setAttribute("content", "width=device-width, initial-scale=1");
     }
+  }
+
+  function tagCompactViewport() {
+    var widths = [
+      window.innerWidth,
+      window.outerWidth,
+      window.screen && window.screen.width,
+      window.visualViewport && window.visualViewport.width
+    ].filter(function (value) {
+      return typeof value === "number" && value > 0;
+    });
+    var compact = widths.some(function (value) { return value <= 640; });
+    if (compact) document.body.classList.add("b24-compact-viewport");
   }
 
   function firstExisting(selectors) {
@@ -416,6 +429,7 @@
   ready(function () {
     if (!isReviewSkin()) return;
     ensureResponsiveViewport();
+    tagCompactViewport();
     injectCss();
     installProductListActionObserver();
 

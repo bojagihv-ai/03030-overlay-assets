@@ -207,8 +207,13 @@ body.b24-overlay-list .b24-list-page .prdList > li {
 }
 
 body.b24-overlay-list .b24-list-page .prdList > li .thumbnail,
-body.b24-overlay-list .b24-list-page .prdList > li .prdImg {
+body.b24-overlay-list .b24-list-page .prdList > li .prdImg,
+body.b24-overlay-list .b24-list-page .prdList > li .box > a:has(img.thumb) {
   position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--b24-line);
+  border-radius: 8px;
   background:
     linear-gradient(135deg, rgba(76, 125, 98, .08), transparent 42%),
     linear-gradient(180deg, #fff, #fafbf9);
@@ -217,7 +222,8 @@ body.b24-overlay-list .b24-list-page .prdList > li .prdImg {
 }
 
 body.b24-overlay-list .b24-list-page .prdList > li .thumbnail::after,
-body.b24-overlay-list .b24-list-page .prdList > li .prdImg::after {
+body.b24-overlay-list .b24-list-page .prdList > li .prdImg::after,
+body.b24-overlay-list .b24-list-page .prdList > li .box > a:has(img.thumb)::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -227,15 +233,23 @@ body.b24-overlay-list .b24-list-page .prdList > li .prdImg::after {
 }
 
 body.b24-overlay-list .b24-list-page .prdList > li:hover .thumbnail,
-body.b24-overlay-list .b24-list-page .prdList > li:hover .prdImg {
+body.b24-overlay-list .b24-list-page .prdList > li:hover .prdImg,
+body.b24-overlay-list .b24-list-page .prdList > li:hover .box > a:has(img.thumb) {
   border-color: rgba(76, 125, 98, .45);
   box-shadow: 0 12px 30px rgba(31, 42, 36, .1);
   transform: translateY(-2px);
 }
 
 body.b24-overlay-list .b24-list-page .prdList .thumbnail a,
-body.b24-overlay-list .b24-list-page .prdList .prdImg a {
+body.b24-overlay-list .b24-list-page .prdList .prdImg a,
+body.b24-overlay-list .b24-list-page .prdList .box > a:has(img.thumb) {
   display: block;
+}
+
+body.b24-overlay-list .b24-list-page .prdList img.thumb {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
 }
 
 body.b24-overlay-list .b24-list-page .prdList .description {
@@ -356,6 +370,102 @@ body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listite
     padding: 0 8px;
     font-size: 11px;
   }
+}
+
+body.b24-compact-viewport.b24-overlay-list #container,
+body.b24-compact-viewport.b24-overlay-list #contents {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+body.b24-compact-viewport.b24-overlay-list .xans-product-menupackage .title h2 {
+  display: none;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 10px !important;
+  box-sizing: border-box;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory > li,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory .sub,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory .sub > li {
+  display: contents !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory strong a,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory .sub a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  max-width: 100%;
+  border: 1px solid rgba(197, 205, 199, .95);
+  border-radius: 999px;
+  background: #fff;
+  padding: 0 9px;
+  color: var(--b24-ink) !important;
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .menuCategory strong a {
+  border-color: rgba(138, 46, 49, .22);
+  background: #fff7f0;
+  color: #8a2e31 !important;
+  font-weight: 900;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 12px;
+  padding: 0 10px !important;
+  box-sizing: border-box;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList > li {
+  float: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description {
+  padding-top: 9px;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description .name,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .description .name a,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .name a {
+  font-size: 12px;
+  line-height: 1.38;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .status {
+  gap: 4px;
+  margin-top: 8px;
+}
+
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .status a,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .status button,
+body.b24-compact-viewport.b24-overlay-list .b24-list-page .prdList .status .b24-list-action {
+  min-height: 28px;
+  padding: 0 8px;
+  font-size: 11px;
 }
 
 .b24-detail-topline {
