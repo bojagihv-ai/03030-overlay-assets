@@ -278,6 +278,86 @@ body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listite
   font-weight: 650;
 }
 
+@media (max-width: 640px) {
+  body.b24-overlay-list .b24-list-page .menuCategory,
+  body.b24-overlay-list .b24-list-page .menuCategory > ul {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+    padding: 12px !important;
+    box-sizing: border-box;
+  }
+
+  body.b24-overlay-list .b24-list-page .menuCategory > li,
+  body.b24-overlay-list .b24-list-page .menuCategory > ul > li {
+    float: none !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.b24-overlay-list .b24-list-page .menuCategory a {
+    display: inline-block;
+    max-width: 100%;
+    color: var(--b24-ink) !important;
+    font-size: 12px;
+    line-height: 1.42;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 12px;
+    padding: 0 6px !important;
+    box-sizing: border-box;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList > li {
+    float: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList .thumbnail,
+  body.b24-overlay-list .b24-list-page .prdList .prdImg {
+    width: auto !important;
+    max-width: 100%;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList .description {
+    padding-top: 9px;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList .description .name,
+  body.b24-overlay-list .b24-list-page .prdList .description .name a,
+  body.b24-overlay-list .b24-list-page .prdList .name a {
+    font-size: 12px;
+    line-height: 1.38;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList .description .xans-product-listitem > li {
+    font-size: 11px;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList .status {
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  body.b24-overlay-list .b24-list-page .prdList .status a,
+  body.b24-overlay-list .b24-list-page .prdList .status button,
+  body.b24-overlay-list .b24-list-page .prdList .status .b24-list-action {
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+}
+
 .b24-detail-topline {
   margin: 20px 0 18px;
   padding: clamp(18px, 2.5vw, 24px);
