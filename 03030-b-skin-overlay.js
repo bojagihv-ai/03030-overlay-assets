@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-24.10";
+  var VERSION = "2026-06-26.1";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -430,6 +430,39 @@
     }
   ];
 
+  function findFlowConfig(path) {
+    return configs.find(function (item) {
+      return path === item.match || path.indexOf(item.match) !== -1;
+    });
+  }
+
+  function applyFlowPageOverlay(config) {
+    if (!config) return;
+    ensureResponsiveViewport();
+    tagCompactViewport();
+    tagServicePath(normalizedPath());
+    wrap(config);
+  }
+
+  function installFlowPageObserver(config) {
+    if (!config || !document.body || !window.MutationObserver) return;
+    var scheduled = false;
+    function scheduleApply() {
+      if (scheduled) return;
+      scheduled = true;
+      window.setTimeout(function () {
+        scheduled = false;
+        if (!isReviewSkin()) return;
+        applyFlowPageOverlay(config);
+      }, 120);
+    }
+    [250, 750, 1500, 3000].forEach(function (delay) {
+      window.setTimeout(scheduleApply, delay);
+    });
+    var observer = new MutationObserver(scheduleApply);
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
   ready(function () {
     if (!isReviewSkin()) return;
     ensureResponsiveViewport();
@@ -441,10 +474,9 @@
     applyLiveRootTransforms(path);
     enhanceProductDetailTopline();
     tagServicePath(path);
-    var config = configs.find(function (item) {
-      return path === item.match || path.indexOf(item.match) !== -1;
-    });
+    var config = findFlowConfig(path);
     if (!config) return;
-    wrap(config);
+    applyFlowPageOverlay(config);
+    installFlowPageObserver(config);
   });
 })();
