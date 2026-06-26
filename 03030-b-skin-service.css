@@ -44,7 +44,7 @@ body.b24-overlay-detail #contents {
     gap: 8px;
     width: var(--b24-compact-width, 390px);
     max-width: 100%;
-    margin: 0 auto 10px;
+    margin: 0 0 10px !important;
     padding: 8px 10px 9px;
     border-bottom: 1px solid var(--b24-line);
     background: #fff;
@@ -102,6 +102,10 @@ body.b24-overlay-detail #contents {
     max-width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #wrap {
+    margin: 0 !important;
   }
 
   body.b24-overlay-active.b24-compact-viewport #header {
