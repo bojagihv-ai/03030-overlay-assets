@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-26.2";
+  var VERSION = "2026-06-26.3";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var source = currentScript.indexOf("03030-live-overlay-loader.js") !== -1
     ? currentScript.replace(/03030-live-overlay-loader\.js(?:\?.*)?$/, "03030-b-skin-overlay.js?v=" + VERSION)

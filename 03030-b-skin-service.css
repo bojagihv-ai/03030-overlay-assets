@@ -46,8 +46,40 @@ body.b24-overlay-detail #contents {
   }
 
   body.b24-overlay-active.b24-compact-viewport #header {
+    height: auto !important;
+    min-height: 0 !important;
     margin: 0 auto !important;
     padding: 0 8px 8px !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #header > .frameWrap {
+    display: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #header > .frameWrap:nth-of-type(3) {
+    display: block !important;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #header > .frameWrap:nth-of-type(3) > .frame {
+    display: none !important;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #header > .frameWrap:nth-of-type(3) > .frame:nth-child(2) {
+    display: flex !important;
+    justify-content: center;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
   }
 
   body.b24-overlay-active.b24-compact-viewport #header .top_banner,
@@ -83,6 +115,16 @@ body.b24-overlay-detail #contents {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #header .xans-layout-category h2 {
+    display: none !important;
+  }
+
+  body.b24-overlay-active.b24-compact-viewport #header .xans-layout-category .postion {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
   }
 
   body.b24-overlay-active.b24-compact-viewport #header .xans-layout-category ul {
