@@ -1000,6 +1000,51 @@ body.b24-overlay-active .banner_left {
 .b24-flow-page a:has(> img[alt="글 복사"])::after { content: "글 복사"; }
 .b24-flow-page a:has(> img[alt="장바구니담기"])::after { content: "장바구니 담기"; }
 
+.b24-product-badge {
+  display: inline-flex;
+  min-height: 22px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(31,42,36,.12);
+  border-radius: 999px;
+  background: #f9fbfa;
+  padding: 0 8px;
+  color: var(--b24-ink);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.b24-product-badge + .b24-product-badge {
+  margin-left: 4px;
+}
+
+.b24-product-badge-soldout {
+  border-color: rgba(138,46,49,.24);
+  background: #fff2f1;
+  color: #8a2e31;
+}
+
+.b24-product-badge-recommend {
+  border-color: rgba(76,125,98,.24);
+  background: #f0f7f3;
+  color: #2f6949;
+}
+
+.b24-product-badge-new {
+  border-color: rgba(26,91,156,.22);
+  background: #eef6ff;
+  color: #225b8f;
+}
+
+.b24-product-badge-sale {
+  border-color: rgba(161,94,24,.24);
+  background: #fff7ea;
+  color: #8c4f16;
+}
+
 .b24-cart-page [module="Order_TotalOrder"],
 .b24-cart-page .xans-order-totalorder {
   display: flex;

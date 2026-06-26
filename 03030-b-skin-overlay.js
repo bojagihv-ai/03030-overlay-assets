@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-26.5";
+  var VERSION = "2026-06-26.6";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -278,6 +278,33 @@
 
   function normalizeProductListActions() {
     if (!document.querySelector(".b24-list-page")) return;
+    Array.prototype.forEach.call(document.querySelectorAll(".b24-list-page .prdList img.icon_img[alt], .b24-list-page .prdList .icon img[alt], .b24-list-page .prdList .status img[alt]"), function (image) {
+      if (image.getAttribute("data-b24-badge-normalized") === "true") return;
+      var raw = cleanText(image.getAttribute("alt") || image.getAttribute("title") || "");
+      var label = "";
+      var tone = "";
+      if (/품절|sold/i.test(raw)) {
+        label = "품절";
+        tone = "soldout";
+      } else if (/추천|인기|best/i.test(raw)) {
+        label = raw.indexOf("인기") !== -1 ? "인기" : "추천";
+        tone = "recommend";
+      } else if (/신상품|new/i.test(raw)) {
+        label = "신상품";
+        tone = "new";
+      } else if (/초특가|세일|sale|할인/i.test(raw)) {
+        label = raw.indexOf("초특가") !== -1 ? "초특가" : "할인";
+        tone = "sale";
+      }
+      if (!label || !image.parentNode) return;
+      var badge = document.createElement("span");
+      badge.className = "b24-product-badge b24-product-badge-" + tone;
+      badge.textContent = label;
+      image.parentNode.insertBefore(badge, image);
+      image.setAttribute("data-b24-badge-normalized", "true");
+      image.className += " b24-source-badge-hidden";
+      image.style.display = "none";
+    });
     Array.prototype.forEach.call(document.querySelectorAll("img.option_preview"), function (image) {
       if (image.getAttribute("data-b24-normalized") === "true") return;
       var anchor = image.closest("a");
