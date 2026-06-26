@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-26.3";
+  var VERSION = "2026-06-26.4";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -453,6 +453,7 @@
     tagCompactViewport();
     tagServicePath(normalizedPath());
     wrap(config);
+    installMobileServiceHeader();
   }
 
   function installFlowPageObserver(config) {
@@ -472,6 +473,48 @@
     });
     var observer = new MutationObserver(scheduleApply);
     observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  function installMobileServiceHeader() {
+    if (!document.body.classList.contains("b24-compact-viewport")) return;
+    if (document.querySelector(".b24-mobile-service-header")) return;
+
+    var sourceHeader = document.querySelector("#header");
+    if (!sourceHeader || !sourceHeader.parentNode) return;
+
+    var bar = document.createElement("div");
+    bar.className = "b24-mobile-service-header";
+
+    var logoLink = document.createElement("a");
+    logoLink.className = "b24-mobile-service-logo";
+    logoLink.href = "/index.html";
+    var logoImage = sourceHeader.querySelector(".xans-layout-logotop img, img[alt*='보자기천국']");
+    if (logoImage) {
+      var clone = logoImage.cloneNode(true);
+      clone.removeAttribute("width");
+      clone.removeAttribute("height");
+      logoLink.appendChild(clone);
+    } else {
+      logoLink.textContent = "보자기천국";
+    }
+
+    var nav = document.createElement("nav");
+    nav.className = "b24-mobile-service-nav";
+    nav.setAttribute("aria-label", "주요 상품분류");
+    Array.prototype.slice.call(sourceHeader.querySelectorAll(".xans-layout-category a[href]"), 0, 10).forEach(function (anchor) {
+      var item = document.createElement("a");
+      item.href = anchor.getAttribute("href") || "#";
+      var image = anchor.querySelector("img");
+      var label = cleanText(anchor.textContent) || cleanText(image && image.getAttribute("alt"));
+      label = label.replace(/[▶▷>]+/g, "").replace(/\*/g, "").trim();
+      item.textContent = label || "상품";
+      nav.appendChild(item);
+    });
+
+    bar.appendChild(logoLink);
+    if (nav.children.length) bar.appendChild(nav);
+    sourceHeader.parentNode.insertBefore(bar, sourceHeader);
+    document.body.classList.add("b24-mobile-service-header-on");
   }
 
   ready(function () {
