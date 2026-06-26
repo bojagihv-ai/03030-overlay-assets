@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "2026-06-26.1";
+  var VERSION = "2026-06-26.2";
   var currentScript = document.currentScript && document.currentScript.src ? document.currentScript.src : "";
   var CSS_URL = currentScript.indexOf("03030-b-skin-overlay.js") !== -1
     ? currentScript.replace(/03030-b-skin-overlay\.js(?:\?.*)?$/, "03030-b-skin-service.css?v=" + VERSION)
@@ -427,6 +427,17 @@
       facts: ["주문 상태 확인", "기간 검색", "배송/취소 내역 확인"],
       targetSelectors: ['[module="MyShop_OrderHistoryHead"]', ".xans-myshop-orderhistoryhead", '[module="MyShop_OrderHistoryList"]', ".xans-myshop-orderhistorylist", ".orderListArea", ".titleArea"],
       extraSelectors: ['[module="MyShop_OrderHistoryTab"]', ".xans-myshop-orderhistorytab", '[module="MyShop_OrderHistoryHead"]', ".xans-myshop-orderhistoryhead", '[module="MyShop_OrderHistoryList"]', ".xans-myshop-orderhistorylist", ".orderListArea", ".ec-base-paginate", ".paginate"]
+    },
+    {
+      marker: "compare",
+      match: "/product/compare.html",
+      className: "b24-flow-page b24-compare-page",
+      eyebrow: "상품 비교",
+      title: "상품 비교하기",
+      body: "선택한 보자기와 포장 상품의 이미지, 가격, 옵션을 한 화면에서 비교합니다.",
+      facts: ["상품 정보 비교", "옵션 및 수량 확인", "장바구니/구매 연결"],
+      targetSelectors: [".xans-product-listcompare", '[module="Product_ListCompare"]'],
+      extraSelectors: [".btnArea"]
     }
   ];
 
